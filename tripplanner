@@ -415,10 +415,10 @@ func planTrip(rw http.ResponseWriter, req *http.Request, p httprouter.Params){
         log.Println(uUD.StartingFromLocationID);
 
     var options RequestOptions;
-    options.ServerToken= "-M051A8lY6As9jwIftQqEHwERTp4GzeGPLD25Yi4";
-    options.ClientId= "5-BNiHDpt1CZvQoWd2G2vV2GSvSnIu2j";
-    options.ClientSecret= "P5qyGJI-sJw5m-s2kFHljzg59kccexZ8qkbaL44P";
-    options.AppName= "TRIPPLANNERESTIMATE";
+    options.ServerToken= "";
+    options.ClientId= "";
+    options.ClientSecret= "";
+    options.AppName= "";
     options.BaseUrl= "https://sandbox-api.uber.com/v1/";
     
 
@@ -632,10 +632,10 @@ func requestTrip(rw http.ResponseWriter, req *http.Request, p httprouter.Params)
 
 
     var options RequestOptions;
-    options.ServerToken= "-M051A8lY6As9jwIftQqEHwERTp4GzeGPLD25Yi4";
-    options.ClientId= "5-BNiHDpt1CZvQoWd2G2vV2GSvSnIu2j";
-    options.ClientSecret= "P5qyGJI-sJw5m-s2kFHljzg59kccexZ8qkbaL44P";
-    options.AppName= "TRIPPLANNERESTIMATE";
+    options.ServerToken= "";
+    options.ClientId= "";
+    options.ClientSecret= "";
+    options.AppName= "";
     options.BaseUrl= "https://sandbox-api.uber.com/v1/";
     client :=Create(&options);
 
@@ -664,7 +664,7 @@ func requestTrip(rw http.ResponseWriter, req *http.Request, p httprouter.Params)
     rr.ProductID=prodid;
     buf, _ := json.Marshal(rr)
     body := bytes.NewBuffer(buf)
-    url := fmt.Sprintf(APIUrl, "requests?","access_token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzY29wZXMiOlsicmVxdWVzdCJdLCJzdWIiOiI3ODZiMzEzMS0wYjliLTRjYjQtODYzYi04YjE4NmUzYzBhZmIiLCJpc3MiOiJ1YmVyLXVzMSIsImp0aSI6IjA3YzRjM2Q1LTg0YzEtNDFjNi1iZDY2LWUxMTRkYjc1NzJiZCIsImV4cCI6MTQ1MDc0NTk2MCwiaWF0IjoxNDQ4MTUzOTYwLCJ1YWN0IjoiSmE0MnlxTjZubnRVMGY5Zlpqa1RreUJZaGdxVGk5IiwibmJmIjoxNDQ4MTUzODcwLCJhdWQiOiJmNTJxZ0pzYzlRbUpBMnN2WFpNWnRNcnZQUXlEelUzcyJ9.Gwwq1LO9qGvVa1LMoHYsd5ZSl-aOLgRJZSBUjB4vlstpccUEu7FlTb8Ed4ms0UTFZswB4ojkgMqJ8mMA7H--1TryfoPEqLfvvyZHYFWi4RhsleGsETAWFaB9m2m-U7ISyKrOjeeTQeRj1SpbxIQcgeFmLvYNe5x1U8oeuoMY2dkDjxSP9nnT2mcq5tQEVdx7BVKQQIg07-2rfSWxKp5I3veyH-rZ7yVCbzlLxWQfNRsJrnzTzKm_MI4yu6a5w3CzCu7raCiJL2HZNzTnZYir3H2KnYe8WsryuMtGqjHM6migzdJsWxCgg6YNZeMqR1leg7wsmnSZhz5LnPYUbkTHQg")
+    url := fmt.Sprintf(APIUrl, "requests?","access_token=")
     res, err := http.Post(url,"application/json",body)
     if err != nil {
         fmt.Println(err)
