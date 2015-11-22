@@ -562,7 +562,7 @@ func requestTrip(rw http.ResponseWriter, req *http.Request, p httprouter.Params)
     if err1 != nil {
          panic(err1)
      }
-    var ogt OnGoingTrip;
+    var ongoing OnGoingTrip;
     result1:=requestObject{}
     result2:=requestObject{}
     conn, err := mgo.Dial("mongodb://dbuser:dbuser@ds045464.mongolab.com:45464/testgoogledatabase")
@@ -620,14 +620,14 @@ func requestTrip(rw http.ResponseWriter, req *http.Request, p httprouter.Params)
         fmt.Println(result2.Coordinates.Lat);
     }
 
-    ogt.ID=strconv.Itoa(ogtID);
-    ogt.BestRouteLocationIds=result.BestRouteLocationIds;
-    ogt.StartingFromLocationID=strconv.Itoa(siD);
-    ogt.NextDestinationLocationID=result.BestRouteLocationIds[currentPos];
-    ogt.TotalDistance=result.TotalDistance;
-    ogt.TotalUberCosts=result.TotalUberCosts;
-    ogt.TotalUberDuration=result.TotalUberDuration;
-    ogt.Status="requesting";
+    ongoing.ID=strconv.Itoa(ogtID);
+    ongoing.BestRouteLocationIds=result.BestRouteLocationIds;
+    ongoing.StartingFromLocationID=strconv.Itoa(siD);
+    ongoing.NextDestinationLocationID=result.BestRouteLocationIds[currentPos];
+    ongoing.TotalDistance=result.TotalDistance;
+    ongoing.TotalUberCosts=result.TotalUberCosts;
+    ongoing.TotalUberDuration=result.TotalUberDuration;
+    ongoing.Status="requesting";
     
 
 
@@ -672,9 +672,9 @@ func requestTrip(rw http.ResponseWriter, req *http.Request, p httprouter.Params)
     data, err := ioutil.ReadAll(res.Body)
     var rRes ReqResponse;
     err = json.Unmarshal(data, &rRes)
-    ogt.UberWaitTimeEta=rRes.Eta;
+    ongoing.UberWaitTimeEta=rRes.Eta;
 
-    js,err := json.Marshal(ogt)
+    js,err := json.Marshal(ongoing)
     if err != nil{
        fmt.Println("Error")
        return
