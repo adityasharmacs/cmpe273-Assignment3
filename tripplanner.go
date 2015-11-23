@@ -23,7 +23,7 @@ type PricingEstimates struct {
     Prices         []PriceEstimate `json:"prices"`
 }
 
-// Uber price estimate
+
 type PriceEstimate struct {
     ProductId       string  `json:"product_id"`
     CurrencyCode    string  `json:"currency_code"`
@@ -36,7 +36,7 @@ type PriceEstimate struct {
     Distance        float64 `json:"distance"`
 }
 
-// Internal method that implements the Getter interface
+
 func (pricer *PricingEstimates) get(c *Client) error {
     priceEstimateParams := map[string]string{
         "start_latitude":  strconv.FormatFloat(pricer.StartLatitude, 'f', 2, 32),
@@ -53,16 +53,16 @@ func (pricer *PricingEstimates) get(c *Client) error {
 }
 
 const (
-    // Uber API endpoint
+    
     APIUrl string = "https://sandbox-api.uber.com/v1/%s%s"
 )
 
-// Getter defines the behavior for all HTTP Get requests
+
 type GetterInterface interface {
     get(c *Client) error
 }
 
-// OAuth parameters
+
 type RequestOptions struct {
     ServerToken    string
     ClientId       string
@@ -74,13 +74,12 @@ type RequestOptions struct {
     BaseUrl        string
 }
 
-// Client contains the required OAuth tokens and urls and manages
-// the connection to the API. All requests are made via this type
+
 type Client struct {
     Options *RequestOptions
 }
 
-// Create returns a new API client
+
 func Create(options *RequestOptions) *Client {
     return &Client{options}
 }
